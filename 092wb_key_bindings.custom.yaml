@@ -3,10 +3,37 @@
 
 092wb_hotkeys: # 092使用的快捷键
   __append:
+    - { accept: 2, send: 2, when: has_menu } # 2选重 L 无名 2
+    - { accept: semicolon, send: 2, when: has_menu } # 2选重 R 小指 ;
+
+    - { accept: 3, send: 3, when: has_menu } # 3选重 L 中指 3
+    - { accept: apostrophe, send: 3, when: has_menu } # 3选重 R 小指 '
+
+    - { accept: 4, send: 4, when: has_menu } # 4选重 L 中指 4
+    - { accept: comma, send: 4, when: has_menu } # 4选重 R 中指 ,
+
+    - { accept: 5, send: 5, when: has_menu } # 5选重 L 食指 5
+    - { accept: period, send: 5, when: has_menu } # 5选重 R 无名 .
+
+    - { accept: 6, send: 6, when: has_menu } # 6选重 L 食指 6 (R 食指 6，如 y 后)
+    - { accept: slash, send: 6, when: has_menu } # 6选重 R 小指 /
+
+    - { accept: ISO_Left_Tab, send: 7, when: has_menu } # 7选重 L 小指 Tab
+    - { accept: Tab, send: 7, when: has_menu } # 7选重 L 小指 Tab
+    - { accept: 7, send: 7, when: has_menu } # 7选重 R 食指 7
+    - { accept: "[", send: 7, when: has_menu } # 7选重 R 小指 [
+
+    - { accept: "Control+Control_L", send: 8, when: has_menu } # 8选重 L 小指 Control (switched with CapsLock)
+    - { accept: 8, send: 8, when: has_menu } # 8选重 R 食指 8
+
+    - { accept: "Shift+Shift_L", send: 9, when: has_menu } # 9选重 L 小指 Shift
+    - { accept: 9, send: 9, when: has_menu } # 9选重 R 中指 9
+
+    - { accept: "z", send: 0, when: has_menu } # 10选重 L 小指 z
+    - { accept: 0, send: 0, when: has_menu } # 10选重 R 无名 0
+
     - { accept: minus, send: Page_Up, when: has_menu } # 上翻页
     - { accept: equal, send: Page_Down, when: has_menu } # 下翻页
-    - { accept: semicolon, send: 2, when: has_menu } # 2选重
-    - { accept: apostrophe, send: 3, when: has_menu } # 3选重
     - { accept: space, send: Escape, when: composing } # 空格清码
     - { accept: space, send: space, when: has_menu }
     # 删掉，防止和Terminal的Ctrl+Shift+F冲突 （我不用繁体）
