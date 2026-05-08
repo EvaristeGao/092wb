@@ -1,1 +1,5 @@
 .DS_Store
+build/
+installation.yaml
+sync/
+user.yaml
