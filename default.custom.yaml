@@ -35,7 +35,7 @@ patch:
   key_binder:
     bindings:
       __patch:
-        - 092wb_key_bindings:/092wb_hotkeys
+        - 092wb_key_bindings.custom:/092wb_hotkeys
   
   recognizer:
     patterns:
