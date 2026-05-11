@@ -1,0 +1,8 @@
+patch:
+  # 增加是否显示留白圆圈数字的选项，默认同上游配置，显示词表中的 ①  等
+  # 在 Trime 等移动端可以设为0，不显示这些圆圈数字，使得结果更加紧凑.
+  "engine/filters/@before 0": lua_filter@*092wb_circled_digit_filter
+  "switches/+":
+    - name: circled_digit
+      reset: 1
+      states: [⓪,①]
