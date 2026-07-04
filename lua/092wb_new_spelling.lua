@@ -114,9 +114,9 @@ local function composing_has_tag(env, tag)
 end
 
 local function yield_japanese_lookup(input, env)
-  local code = env.engine.context.input:gsub("^zu", "")
+  local show_hint = env.engine.context:get_option("japanese_hint")
   for cand in input:iter() do
-    if cand.comment == '' and code ~= '' then cand.comment = code end
+    if not show_hint then cand.comment = '' end
     yield(cand)
   end
 end
@@ -168,4 +168,3 @@ local function init(env)
 end
 
 return { init = init, func = filter }
-

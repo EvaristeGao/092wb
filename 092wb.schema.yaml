@@ -44,6 +44,9 @@ switches:
   - name: circled_digit
     reset: 1
     states: [⓪,①]
+  - name: japanese_hint
+    reset: 1
+    states: [ 日隐, 日提 ]
 engine:
   filters:
     - lua_filter@*092wb_circled_digit_filter # 是否过滤数字圆圈
