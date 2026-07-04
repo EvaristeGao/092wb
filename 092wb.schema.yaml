@@ -12,6 +12,7 @@ schema:
     - 092wb_core        # 引入自定义过滤
     - 092wb_py          # 反查
     - 092wb_wb_spelling # 引入拆分
+    - japanese          # 日语罗马字穿插输入
 
 
 # reset: 默认状态。注释掉后，切换窗口时不会重置到默认状态。
@@ -60,11 +61,13 @@ engine:
     - ascii_segmentor
     - matcher
     - abc_segmentor
+    - affix_segmentor@japanese_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator
     - reverse_lookup_translator             # 反查
+    - script_translator@japanese_lookup     # 日语罗马字查询
     - table_translator
     - history_translator@repeat_last_input  # 上屏最后一次输入
     - lua_translator@*092wb_helper                 # 帮助
@@ -102,6 +105,18 @@ reverse_lookup:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
+
+japanese_lookup:
+  tag: japanese_lookup
+  dictionary: japanese
+  spelling_hints: 5
+  enable_completion: true
+  prefix: "zu"
+  tips: [日语]
+  comment_format:
+    - 'xlit|q|ー|'
+  preedit_format:
+    - 'xlit|q|ー|'
 
 #  OpenCC 支持。
 #  github地址：https://github.com/BYVoid/OpenCC

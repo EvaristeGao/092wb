@@ -28,6 +28,32 @@
 
 ## 内置方案
 + **092五笔**：主体方案
++ **日本語**：来自 `rime-japanese` submodule 的日语方案
+
+### 日语方案
+
+日语方案来自 `rime-japanese` submodule。使用 `--recursive` 克隆后可直接部署：
+
+```shell
+git clone --recursive <repo-url>
+```
+
+如克隆时没有初始化子模块，后续运行：
+
+```shell
+git submodule update --init --recursive
+```
+
+根目录的 `japanese*.yaml` 是指向 `rime-japanese/` 的符号链接。如需修复这些链接，运行：
+
+```shell
+scripts/sync-rime-japanese
+```
+
+在 092 五笔中可用 `zu` 前缀穿插输入日语罗马字。例如输入 `zunihon`、`zuarigatou` 查询日语候选。
+
+Rime 部署后的实际候选效果需要在本机输入法中验证。
+
 ## 下载地址：
  + [永硕E盘](http://092wb.ys168.com/)
 ## [东风破plum](https://github.com/rime/plum)

@@ -6,6 +6,7 @@ config_version: '0.40'
 # 方案列表
 schema_list:
   - schema: 092wb
+  - schema: japanese
 #  - schema: py
 
 switcher:
@@ -39,7 +40,8 @@ key_binder:
 recognizer:
   patterns:
     punct: "^zi([0-9]0?|[A-Za-z]+)$"          # 特殊符号引导规则
-    reverse_lookup: "^z[a-z]*'?$"             # 反查规则
+    japanese_lookup: "^zu[a-z_-]*$"           # 日语罗马字查询规则
+    reverse_lookup: "^z([a-tv-z][a-z]*)?'?$"  # 反查规则，排除 zu 日语前缀
     uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
     helper: '^aid$'

@@ -3,3 +3,4 @@ build/
 installation.yaml
 sync/
 user.yaml
+*.userdb/

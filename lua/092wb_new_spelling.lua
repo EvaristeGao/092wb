@@ -106,7 +106,27 @@ local function get_tricomment(cand, env)
   return ''
 end
 
+local function composing_has_tag(env, tag)
+  local composition = env.engine.context.composition
+  if composition:empty() then return false end
+  local segment = composition:back()
+  return segment and segment:has_tag(tag)
+end
+
+local function yield_japanese_lookup(input, env)
+  local code = env.engine.context.input:gsub("^zu", "")
+  for cand in input:iter() do
+    if cand.comment == '' and code ~= '' then cand.comment = code end
+    yield(cand)
+  end
+end
+
 local function filter(input, env)
+  if composing_has_tag(env, "japanese_lookup") then
+    yield_japanese_lookup(input, env)
+    return
+  end
+
   if env.engine.context:get_option("new_spelling") then
     for cand in input:iter() do
       if cand.type == 'simplified' and env.name_space == 'new_for_rvlk' then
@@ -148,6 +168,4 @@ local function init(env)
 end
 
 return { init = init, func = filter }
-
-
 

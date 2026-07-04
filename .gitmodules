@@ -1,0 +1,3 @@
+[submodule "rime-japanese"]
+	path = rime-japanese
+	url = https://github.com/gkovacs/rime-japanese.git

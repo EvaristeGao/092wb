@@ -1,0 +1,38 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+
+SUBMODULE_DIR="rime-japanese"
+
+FILES="
+japanese.schema.yaml
+japanese.dict.yaml
+japanese.jmdict.dict.yaml
+japanese.kana.dict.yaml
+japanese.mozc.dict.yaml
+"
+
+if [ ! -d "$SUBMODULE_DIR" ]; then
+  echo "error: $SUBMODULE_DIR is missing. Run: git submodule update --init --recursive" >&2
+  exit 1
+fi
+
+if [ ! -f "$SUBMODULE_DIR/japanese.schema.yaml" ]; then
+  echo "error: $SUBMODULE_DIR is not initialized. Run: git submodule update --init --recursive" >&2
+  exit 1
+fi
+
+for file in $FILES; do
+  if [ ! -f "$SUBMODULE_DIR/$file" ]; then
+    echo "error: missing source file: $SUBMODULE_DIR/$file" >&2
+    exit 1
+  fi
+done
+
+for file in $FILES; do
+  rm -f "$file"
+  ln -s "$SUBMODULE_DIR/$file" "$file"
+done
+
+echo "Linked rime-japanese files."
